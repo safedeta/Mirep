@@ -1,13 +1,10 @@
-const express = require('express');
+const functions = require("firebase-functions");
+const express = require("express");
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
+app.get("/", (req, res) => {
+    res.send("Hello World from Firebase!");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
-module.exports = app;
+exports.api = functions.https.onRequest(app);
